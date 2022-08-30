@@ -24,7 +24,7 @@ def handle_text(message):
             with open(r'./audio/{}'.format(NUM2NAME[message.text]), 'rb') as audio:
                 audio_md = bot.send_audio(message.from_user.id, audio)
                 audio_cache[message.text] = audio_md.audio.file_id
-    except FileNotFoundError:
+    except KeyError:
         bot.send_message(message.chat.id, 'Аудио не найдено')
 
 
